@@ -1,0 +1,28 @@
+# Super simple example of how an app can pull the credentials for elastic
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: default
+spec:
+  containers:
+  - image: curlimages/curl
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: app
+    env:
+      - name: ELASTIC_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: quickstart-es-elastic-user
+            key: elastic
+    volumeMounts:
+    - name: certificates
+      mountPath: "/certificates"
+      readOnly: true
+  volumes:
+    - name: certificates
+      secret:
+        secretName: quickstart-es-http-certs-internal

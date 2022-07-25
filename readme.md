@@ -82,17 +82,29 @@ Elastic Cloud on Kubernetes is a essentially a plugin for Kubernetes that greatl
 
 ## Install Elasticsearch
 
-- `kubectl apply -f k8s/3_cluster/elasticsearch.yaml `
+- `kubectl apply -f k8s/3_cluster/elasticsearch.yaml`
 - `kubectl apply -f k8s/3_cluster/kibana.yaml`
 - :elasticsearch, :statefulset, :pods, :persistentvolume, :service
 
 ## But how do we see it?
 
 - Clusters are closed to the outside world by default
-- We need to open up a port
-- Oh...https?
-- Oh...authentication?
-- :secrets
+- We need to open up a port, k9s makes it easy to port-forward
+  - And it uses https
+  - And it generates a password for authentication
+  - Get the password with :secrets
+- How can we use this in our apps?
+  - `kubectl apply -f k8s/3_cluster/app.yaml`
+    - [Certificate Documentation](https://www.elastic.co/guide/en/cloud-on-k8s/master/k8s-tls-certificates.html)y
+
+```bash
+curl \
+  --cacert /certificates/ca.crt \
+  --key /certificates/tls.key \
+  --cert /certificates/tls.crt \
+  -u elastic:$ELASTIC_PASSWORD \
+  https://quickstart-es-http:9200/*/_search?pretty
+```
 
 # Examples
 
