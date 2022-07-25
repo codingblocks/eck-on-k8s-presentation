@@ -116,7 +116,6 @@ curl \
 - Different types of services
   - Kibana
 - Setting up beats
-- Multiple clusters
 - Loading data
 
 # Where do we go from here?
