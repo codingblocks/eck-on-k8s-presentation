@@ -3,6 +3,8 @@ kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
+  # The tip o' the iceberg
+  # https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-api-elasticsearch-k8s-elastic-co-v1.html
   version: 7.17.5
   nodeSets:
   - name: default

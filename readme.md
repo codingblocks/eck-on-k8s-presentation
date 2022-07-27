@@ -79,6 +79,7 @@ Elastic Cloud on Kubernetes is a essentially a plugin for Kubernetes that greatl
 - Creates an operator in :namespace elastic-system
 - An operator is like a person on your team that is responsible for managing your Kubernetes cluster
 - It will take your Elasticsearch and Kibana resource definitions and translate it to Kubernetes resources
+- [Operator documentation](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html)
 
 ## Install Elasticsearch
 
@@ -116,7 +117,7 @@ curl \
 - Different types of services
   - Kibana
 - Setting up beats
-- Loading data
+- See everything we've set up today: `kubectl -n default get all`
 
 # Where do we go from here?
 
